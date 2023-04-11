@@ -1,0 +1,17 @@
+# Ignore build artifacts
+build/
+dist/
+*.exe
+
+# Ignore dependencies
+node_modules/
+bower_components/
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.sublime*
+
+# Ignore system files
+Thumbs.db
+.DS_Store
