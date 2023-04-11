@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import BookshelfContainer from "./components/BookshelfContainer";
 import SearchModal from "./components/SearchModal";
 import * as BooksAPI from "./BooksAPI";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -13,7 +14,6 @@ function App() {
     const res = await BooksAPI.getAll();
     setBooks(res);
   };
-
 
   const updateBookShelf = (book, shelf) => {
     const update = async () => {
@@ -87,6 +87,7 @@ function App() {
           <SearchModal searchBooks={searchBooks} searchResults={searchResults} addBookToShelf={addBookToShelf} books={books} getBooks={getBooks} setSearchResults={setSearchResults}/>
         }
       />
+      <Route path="*" element={<NotFound/>}/>
     </Routes>
   );
 }

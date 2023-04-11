@@ -1,3 +1,4 @@
+import { debounce } from "lodash";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
@@ -5,6 +6,8 @@ import SearchResults from "./SearchResults";
 
 const SearchModal = ({ searchBooks, searchResults, addBookToShelf, books, getBooks}) => {
   const [query, setQuery] = useState("");
+
+  const debounceSearch = debounce(searchBooks, 300);
 
   useEffect(() => {
     getBooks();
@@ -17,7 +20,7 @@ const SearchModal = ({ searchBooks, searchResults, addBookToShelf, books, getBoo
     e.preventDefault();
     const value = e.target.value;
     setQuery(value);
-    searchBooks(value);
+    debounceSearch(value);
   };
   
   const updatedSearchResults = searchResults.map((result) => {

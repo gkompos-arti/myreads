@@ -27,7 +27,13 @@ const Book = ({book, updateBookShelf}) => {
         </div>
         <div className="book-title">{book?.title}</div>
         {book.authors && (
-        <div className="book-authors">{book.authors[0]}</div>
+        <div className="book-authors">
+          {
+            book.authors.map(author => (
+              <div key={author}>{author}</div>
+            ))
+          }
+        </div>
         )}
       </div>
     );
